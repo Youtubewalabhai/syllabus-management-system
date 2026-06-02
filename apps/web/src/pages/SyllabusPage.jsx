@@ -70,8 +70,10 @@ function SyllabusPage() {
   }
 
   useEffect(() => {
-    loadData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const timer = setTimeout(() => {
+      void loadData();
+    }, 0);
+    return () => clearTimeout(timer);
   }, [role]);
 
   const handleCreate = async () => {

@@ -18,8 +18,10 @@ function AdminPage() {
   }
 
   useEffect(() => {
-    loadReports();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const timer = setTimeout(() => {
+      void loadReports();
+    }, 0);
+    return () => clearTimeout(timer);
   }, []);
 
   const downloadCsv = async () => {
