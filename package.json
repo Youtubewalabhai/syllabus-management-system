@@ -1,0 +1,18 @@
+{
+  "name": "syllabus-management-system",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-ready starter for student syllabus management system",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w api & npm run dev -w web",
+    "dev:api": "npm run dev -w api",
+    "dev:web": "npm run dev -w web",
+    "build": "npm run build -w web",
+    "test": "npm run test -w api",
+    "lint": "npm run lint -w web"
+  }
+}

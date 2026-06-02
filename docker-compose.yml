@@ -1,0 +1,36 @@
+services:
+  mongodb:
+    image: mongo:8
+    container_name: syllabus-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  api:
+    build:
+      context: ./apps/api
+    container_name: syllabus-api
+    environment:
+      NODE_ENV: development
+      PORT: 4000
+      MONGO_URI: mongodb://mongodb:27017/syllabus_management
+      JWT_SECRET: replace-with-long-random-secret
+      CORS_ORIGIN: http://localhost:5173
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongodb
+
+  web:
+    build:
+      context: ./apps/web
+    container_name: syllabus-web
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
+
+volumes:
+  mongo_data:
