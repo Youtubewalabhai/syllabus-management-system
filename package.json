@@ -1,0 +1,27 @@
+{
+  "name": "studentos",
+  "version": "1.0.0",
+  "description": "An educational web application that streamlines syllabus management, course tracking, and academic content organization for institutions and students.",
+  "main": "index.js",
+  "scripts": {
+    "dev:web": "npm --workspace apps/web run dev",
+    "dev:api": "npm --workspace apps/api run dev",
+    "test": "npm --workspace apps/api run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Youtubewalabhai/syllabus-management-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Youtubewalabhai/syllabus-management-system/issues"
+  },
+  "homepage": "https://github.com/Youtubewalabhai/syllabus-management-system#readme",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ]
+}
