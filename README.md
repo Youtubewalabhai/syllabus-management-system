@@ -24,6 +24,7 @@ apps/
 - Profile APIs
 - Course management and batch/semester organization
 - Syllabus management with PDF upload/download and version history
+- Topic-level syllabus allocation, coverage tracking, completion analytics, and backlog alerts
 - Academic calendar/events APIs
 - Assignment creation and submission tracking
 - Grade entry and GPA endpoint
@@ -78,6 +79,11 @@ npm run dev:web
 - `PATCH /users/me`
 - `GET/POST /courses`
 - `GET/POST /syllabi`
+- `POST /syllabi/:id/upload`
+- `PATCH /syllabi/:id/allocation`
+- `PATCH /syllabi/:id/topics/:topicId/progress`
+- `GET /syllabi/:id/report`
+- `GET /syllabi/reports/summary` (supports filters + CSV export)
 - `GET /syllabi/:id/download`
 - `GET/POST /assignments`
 - `POST /assignments/:id/submit`

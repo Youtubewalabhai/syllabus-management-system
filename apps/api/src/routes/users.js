@@ -2,8 +2,20 @@ const express = require('express');
 const User = require('../models/User');
 const mongoSanitize = require('mongo-sanitize');
 const { authRequired } = require('../middleware/auth');
+const { allowRoles } = require('../middleware/rbac');
 
 const router = express.Router();
+
+router.get('/', authRequired, allowRoles('admin'), async (req, res, next) => {
+  try {
+    const query = {};
+    if (req.query.role) query.role = mongoSanitize(req.query.role);
+    const users = await User.find(query).select('-passwordHash -passwordResetToken -passwordResetExpiry').sort({ name: 1 });
+    return res.json(users);
+  } catch (error) {
+    return next(error);
+  }
+});
 
 router.get('/me', authRequired, async (req, res, next) => {
   try {
